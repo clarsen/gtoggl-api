@@ -84,7 +84,7 @@ func (c *TimeEntryClient) List() (TimeEntries, error) {
 }
 
 func (c *TimeEntryClient) Create(t *TimeEntry) (*TimeEntry, error) {
-	if len(t.CreatedWith) < 0 {
+	if len(t.CreatedWith) <= 0 {
 		t.CreatedWith = "gtoggl"
 	}
 	up := map[string]interface{}{"time_entry": t}
@@ -92,7 +92,7 @@ func (c *TimeEntryClient) Create(t *TimeEntry) (*TimeEntry, error) {
 }
 
 func (c *TimeEntryClient) CreateAndStart(t *TimeEntry) (*TimeEntry, error) {
-	if len(t.CreatedWith) < 0 {
+	if len(t.CreatedWith) <= 0 {
 		t.CreatedWith = "gtoggl"
 	}
 	up := map[string]interface{}{"time_entry": t}
