@@ -57,6 +57,10 @@ func (c *TimeEntryClient) Get(tid uint64) (*TimeEntry, error) {
 	return timeEntryResponse(c.thc.GetRequest(fmt.Sprintf("%s/%d", c.endpoint, tid)))
 }
 
+func (c *TimeEntryClient) GetCurrent() (*TimeEntry, error) {
+	return timeEntryResponse(c.thc.GetRequest(c.currentEndpoint))
+}
+
 func (tc *TimeEntryClient) Delete(id uint64) error {
 	_, err := tc.thc.DeleteRequest(fmt.Sprintf("%s/%d", tc.endpoint, id), nil)
 	return err
@@ -81,6 +85,14 @@ func (c *TimeEntryClient) Create(t *TimeEntry) (*TimeEntry, error) {
 	}
 	up := map[string]interface{}{"time_entry": t}
 	return timeEntryResponse(c.thc.PostRequest(c.endpoint, up))
+}
+
+func (c *TimeEntryClient) CreateAndStart(t *TimeEntry) (*TimeEntry, error) {
+	if len(t.CreatedWith) < 0 {
+		t.CreatedWith = "gtoggl"
+	}
+	up := map[string]interface{}{"time_entry": t}
+	return timeEntryResponse(c.thc.PostRequest(c.startEndpoint, up))
 }
 
 func (c *TimeEntryClient) Update(t *TimeEntry) (*TimeEntry, error) {
