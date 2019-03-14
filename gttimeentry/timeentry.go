@@ -66,6 +66,10 @@ func (tc *TimeEntryClient) Delete(id uint64) error {
 	return err
 }
 
+func (c *TimeEntryClient) Stop(id uint64) (*TimeEntry, error) {
+	return timeEntryResponse(c.thc.PutRequest(fmt.Sprintf("%s/%d/stop", c.endpoint, id), nil))
+}
+
 func (c *TimeEntryClient) List() (TimeEntries, error) {
 	body, err := c.thc.GetRequest(c.endpoint)
 	var te TimeEntries
