@@ -54,7 +54,7 @@ func getResponse() mockFunc {
 		if req.URL.RawQuery == "" {
 			r = fmt.Sprintf("mock/%s%s.json", req.Method, req.URL.Path)
 		} else {
-			r = fmt.Sprintf("mock/%s%s?%s.json", req.Method, req.URL.Path, req.URL.RawQuery)
+			r = fmt.Sprintf("mock/%s%s_QUERYSEP_%s.json", req.Method, req.URL.Path, req.URL.RawQuery)
 		}
 		resp := mockResponses[r]
 		if resp == nil {
