@@ -2,7 +2,8 @@ package gtuser
 
 import (
 	"encoding/json"
-	"github.com/dougEfresh/gtoggl-api/gthttp"
+
+	"github.com/clarsen/gtoggl-api/gthttp"
 )
 
 // Toggl User Definition

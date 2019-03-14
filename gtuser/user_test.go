@@ -1,8 +1,9 @@
 package gtuser
 
 import (
-	"github.com/dougEfresh/gtoggl-api/test"
 	"testing"
+
+	gttest "github.com/clarsen/gtoggl-api/test"
 )
 
 func togglClient(t *testing.T) *UserClient {

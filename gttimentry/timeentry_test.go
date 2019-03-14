@@ -1,9 +1,10 @@
 package gttimeentry
 
 import (
-	"github.com/dougEfresh/gtoggl-api/test"
 	"testing"
 	"time"
+
+	gttest "github.com/clarsen/gtoggl-api/test"
 )
 
 func togglClient(t *testing.T) *TimeEntryClient {

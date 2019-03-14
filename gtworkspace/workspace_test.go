@@ -1,8 +1,9 @@
 package gtworkspace
 
 import (
-	"github.com/dougEfresh/gtoggl-api/test"
 	"testing"
+
+	gttest "github.com/clarsen/gtoggl-api/test"
 )
 
 func workspaceClient(t *testing.T) *WorkspaceClient {

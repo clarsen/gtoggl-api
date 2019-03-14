@@ -5,25 +5,26 @@ import (
 	"fmt"
 	"net/url"
 	"time"
-	"github.com/dougEfresh/gtoggl-api/gthttp"
-	"github.com/dougEfresh/gtoggl-api/gtproject"
-	"github.com/dougEfresh/gtoggl-api/gtworkspace"
+
+	"github.com/clarsen/gtoggl-api/gthttp"
+	"github.com/clarsen/gtoggl-api/gtproject"
+	"github.com/clarsen/gtoggl-api/gtworkspace"
 )
 
 type TimeEntry struct {
-	Id          uint64                `json:"id,omitempty"`
-	Description string                `json:"description"`
+	Id          uint64                 `json:"id,omitempty"`
+	Description string                 `json:"description"`
 	Project     *gtproject.Project     `json:"project"`
-	Start       time.Time             `json:"start"`
-	Stop        time.Time             `json:"stop"`
-	Duration    int64                 `json:"duration"`
-	Billable    bool                  `json:"billable"`
+	Start       time.Time              `json:"start"`
+	Stop        time.Time              `json:"stop"`
+	Duration    int64                  `json:"duration"`
+	Billable    bool                   `json:"billable"`
 	Workspace   *gtworkspace.Workspace `json:"workspace"`
-	Tags        []string              `json:"tags"`
-	Pid         uint64                `json:"pid"`
-	Wid         uint64                `json:"wid"`
-	Tid         uint64                `json:"tid"`
-	CreatedWith string                `json:"created_with,omitempty" `
+	Tags        []string               `json:"tags"`
+	Pid         uint64                 `json:"pid"`
+	Wid         uint64                 `json:"wid"`
+	Tid         uint64                 `json:"tid"`
+	CreatedWith string                 `json:"created_with,omitempty" `
 }
 
 type TimeEntries []TimeEntry
