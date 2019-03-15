@@ -5,12 +5,13 @@ import (
 	"encoding/json"
 	"errors"
 	"fmt"
-	"github.com/throttled/throttled"
-	"github.com/throttled/throttled/store/memstore"
 	"io/ioutil"
 	"net/http"
 	"strconv"
 	"time"
+
+	"github.com/throttled/throttled"
+	"github.com/throttled/throttled/store/memstore"
 )
 
 const (
@@ -221,6 +222,7 @@ func requestWithLimit(c *TogglHttpClient, method, endpoint string, b interface{}
 			return nil, err
 		}
 	}
+	c.traceLog.Printf("Sending post to %+V, body %+v\n", endpoint, string(body))
 
 	req, err := http.NewRequest(method, endpoint, bytes.NewBuffer(body))
 	if err != nil {
