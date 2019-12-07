@@ -15,12 +15,13 @@ import (
 )
 
 const (
-	DefaultAuthPassword       = "api_token"
-	DefaultMaxRetries         = 5
-	DefaultGzipEnabled        = false
-	DefaultUrl                = "https://www.toggl.com/api/v8"
-	DefaultVersion            = "v8"
-	SessionCookieName         = "toggl_api_session_new"
+	DefaultAuthPassword = "api_token"
+	DefaultMaxRetries   = 5
+	DefaultGzipEnabled  = false
+	DefaultUrl          = "https://www.toggl.com/api/v8"
+	DefaultVersion      = "v8"
+	// SessionCookieName         = "toggl_api_session_new"
+	SessionCookieName         = "__Host-timer-session"
 	defaultBucket             = "toggl"
 	DefaultRateLimitPerSecond = 3
 )
@@ -228,7 +229,10 @@ func requestWithLimit(c *TogglHttpClient, method, endpoint string, b interface{}
 	if err != nil {
 		return nil, err
 	}
-	req.AddCookie(c.cookie)
+	if c.cookie != nil {
+		c.traceLog.Printf("req is %+V, cookie is %+V", req, c.cookie)
+		req.AddCookie(c.cookie)
+	}
 	c.dumpRequest(req)
 	resp, err := c.client.Do(req)
 	if err != nil {
